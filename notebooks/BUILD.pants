@@ -1,0 +1,3 @@
+# Put your dependencies in the requirements
+
+jupyter_lab(name="default", requirements=["pyspark==3.3.0"])

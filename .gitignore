@@ -1,0 +1,7 @@
+.pids
+.pants.d
+__pycache__
+dist/
+.idea/
+.ipynb_checkpoints
+
