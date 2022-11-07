@@ -1,34 +1,17 @@
-# Launching Jupyter Labs in an easy way
+# Launching Jupyter Notebooks in an easy way
 ## Usage
 ``` shell
-# Default Resolve
 bin/lab
-
-bin/lab duckdb
-bin/lab data
 ```
-## How to define a Jupyter Lab
-### Three Highlights
+
+
+
+## Three Highlights
 + **Free** yourself of **Python virtual environment**
 + **Reproducible** because of  the dependencies lock mechanism
-+ As **Easy** as `bin/lab xyz` to launch a JupyterLab
++ As **Easy** as `bin/lab` to launch a JupyterLab
 
-### Take `duckdb` for example
-``` python
-jupyter_lab(name="duckdb", requirements=["duckdb==0.5.1"])
-```
+## How to change the dependencies
+Just change the requirements in [notebooks/BUILD.pants](notebooks/BUILD.pants)
 
-+ [notebooks/duckdb](notebooks/duckdb) is where we store the notebooks
-+ resolve `duckdb` is defined as `duckdb = "3rdparty/python/duckdb.lock"` in [pants.toml](pants.toml)
-+ run `./pants generate-lockfiles --resolve=duckdb` to generate the lockfiles for dependencies
-
-### Name and Requirements
-Name is used to:
-+ Locate where we store the notebooks: `notebooks/{name}`
-+ Set dependencies as the resolve `name`
-
-The Jupyter Lab `default` is special, we kept all notebooks for `default` under `notebooks`.
-
-Requirements are equiv to `requirements.txt` but we maintain it in a list here.
-
-Everytime, we change the requirements, do not forget to run `./pants generate-lockfiles --resolve={name}`.
+If you want to manage the different set of dependencies and launch different JupyterLab instances in one Git repo, see [jupyterlab-best-practice](https://github.com/da-tubi/jupyterlab-best-practice).
